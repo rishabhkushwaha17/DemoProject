@@ -13,9 +13,11 @@ contract MyNFT is ERC721, Ownable {
     // Constructor to initialize the ERC721 token and set the contract owner
     constructor() Ownable(msg.sender) ERC721("MyNFT", "MNFT") {}
 
-    // @param collector The address of the collector to receive the NFT
-    // @param tokenId The unique identifier for the NFT
-    // @param _metadataURI The metadata URI associated with the NFT
+    /**
+     * @notice Mints a new NFT to the specified address with metadata URI
+     * @param to The address of the collector to receive the NFT
+     * @param metadataURI The metadata URI associated with the NFT
+     */
     function mint(address to, string memory metadataURI) public onlyOwner {
         uint256 tokenId = nextTokenId;
         _safeMint(to, tokenId);
